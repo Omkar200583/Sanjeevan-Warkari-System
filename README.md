@@ -1,121 +1,90 @@
-# 🎓 Smart Placement System
+# 🌼 Sanjeevan Warkari Educational Institution Management System
 
-A full-stack web application for managing student admissions, placement processes, and admin workflows with role-based access.
+## 📖 Overview
+The Sanjeevan Warkari Educational Institution Management System is a web-based application developed to manage student records efficiently. It provides a centralized platform for managing student data, admissions, updates, and galleries.
 
----
-
-## 🚀 Features
-
-### 👨‍🎓 Student
-
-* Register & Login
-* Fill Admission Form
-* Upload Resume 📄
-* View Approval Status (✅ Approved / ❌ Rejected)
-* Apply to Companies 🏢
-* Track Applications
-* Access Personal Dashboard 📊
-
-### 👨‍💼 Admin / Staff
-
-* Secure Login 🔐
-* Approve / Reject Admissions ✅❌
-* Manage Students 👥
-* Upload Updates & Announcements 📢
-* Manage Gallery 🖼️
-* Track Student Progress 📈
+This system replaces manual record-keeping and ensures:
+- Fast access to data
+- Better organization
+- Secure storage
 
 ---
 
-## 🧱 Modules
-
-* 🔐 Authentication System
-* 📝 Student Management
-* 🏢 Company Management
-* 📄 Application System
-* 📊 Admin Dashboard
-* 📈 Progress Tracking
+## 🎯 Objectives
+- Manage student records efficiently
+- Maintain admission data digitally
+- Provide updates and notifications
+- Improve transparency and communication
+- Reduce manual workload
 
 ---
 
-## 🗄️ Database Structure
+## 🧑‍💼 Users
+### Admin
+- Manage students and admissions
+- Add updates and gallery images
+- Control system access
 
-* Users 👤
-* Admissions 📝
-* Resumes 📄
-* Companies 🏢
-* Applications 📬
-* Progress 📊
-* Updates 📢
-* Gallery 🖼️
-
----
-
-## 🔄 System Flow
-
-Login → Role Check → Student/Admin
-
-**Student Flow:**
-Fill Admission → Submit → Admin Approval
-➡️ Approved → Dashboard → Apply for Jobs
-
-**Admin Flow:**
-Login → Dashboard → Manage System
+### Students / Parents
+- View updates and information
+- Access admission details
+- Stay connected with institution
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠️ Technologies Used
 
 ### Frontend
-
-* HTML
-* CSS 🎨
-* JavaScript ⚡
+- HTML5
+- CSS3
+- JavaScript
+- Bootstrap
 
 ### Backend
-
-* Node.js 🟢
-* Express.js 🚀
+- Node.js
+- Express.js
 
 ### Database
+- PostgreSQL
 
-* PostgreSQL 🐘
+### Tools
+- VS Code
+- Git & GitHub
 
 ---
 
-## 📂 Project Structure
+## 💻 Features
+- 🔐 Authentication System (Login/Register)
+- 📝 Admission Form Management
+- 🖼️ Gallery Management
+- 📢 Updates/Announcements
+- 🌐 Multilingual Support (Marathi & English)
+- 📱 Responsive UI
 
-project/
-├── frontend/
-├── backend/
-├── database/
-├── diagram.xml
-└── README.md
+---
+
+## 🗂️ Database Tables
+- Users
+- Admissions
+- Galleries
+- Updates
 
 ---
 
 ## 📊 ER Diagram
-
-Import the XML file into diagrams.net to view the diagram.
-
----
-
-## 🔮 Future Enhancements
-
-* AI-based job recommendations 🤖
-* Email notifications 📧
-* Online test system 📝
-* Interview scheduling 📅
-* Mobile application 📱
+The system includes entities:
+- Admin
+- Student
+- Result
+- Gallery
+- Updates
 
 ---
 
-## 👨‍💻 Author
+## ⚙️ Installation
 
-**Omkar Jadhav**
-
----
-
-## ⭐ Support
-
-If you like this project, give it a ⭐ on GitHub!
+```bash
+git clone https://github.com/YOUR-USERNAME/YOUR-REPO.git
+cd YOUR-REPO
+npm install
+npm start
