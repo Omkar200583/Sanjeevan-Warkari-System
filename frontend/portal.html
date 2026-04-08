@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="mr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>विद्यार्थी पोर्टल | Student Portal — श्री संजीवन वारकरी</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Marathi:ital@0;1&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="student.css">
+
+</head>
+
+<body>
+
+    <div class="bg-orbs">
+        <div class="orb orb1"></div>
+        <div class="orb orb2"></div>
+        <div class="orb orb3"></div>
+    </div>
+    <div class="particles" id="particles"></div>
+
+    <div class="toast" id="toast">
+        <div class="toast-icon">🙏</div>
+        <div>
+            <div class="toast-title" id="toastTitle"></div>
+            <div class="toast-sub" id="toastSub"></div>
+        </div>
+    </div>
+
+    <!-- ===== LOADING SCREEN ===== -->
+    <div class="screen active" id="screen-loading">
+        <div class="loader-ring"></div>
+        <div class="loader-text">पोर्टल लोड होत आहे... / Loading portal...</div>
+    </div>
+
+    <!-- ===== PENDING SCREEN ===== -->
+    <div class="screen" id="screen-pending">
+        <div class="pending-box">
+            <div class="pending-icon" id="pendingIcon">⏳</div>
+            <div class="pending-title" id="pendingTitle">अर्ज प्रलंबित आहे</div>
+            <div class="pending-sub" id="pendingSub">Your admission application is under review</div>
+            <div class="pending-status" id="pendingStatus"></div>
+            <div class="pending-actions" id="pendingActions"></div>
+        </div>
+    </div>
+
+    <!-- ===== PORTAL SCREEN ===== -->
+    <div class="screen" id="screen-portal">
+        <div class="portal-shell">
+            <div class="topbar">
+                <div class="topbar-logo">🪷 संजीवन</div>
+                <div class="topbar-divider"></div>
+                <div class="topbar-portal-name">Student Portal</div>
+                <div class="topbar-right">
+                    <div class="lang-toggle">
+                        <button class="lang-opt active" onclick="toggleLang('mr',this)">मराठी</button>
+                        <button class="lang-opt" onclick="toggleLang('en',this)">EN</button>
+                    </div>
+                    <div class="notif-btn" onclick="showToast('🔔','अपडेट्स','Updates loaded from database')">🔔<span
+                            class="notif-dot" id="notifDot"></span></div>
+                    <div class="user-pill" onclick="navigate('profile')">
+                        <div class="user-avatar" id="avatarLetter">?</div>
+                        <div>
+                            <div class="user-name" id="topbarName">Loading...</div>
+                            <div class="user-role" id="topbarRole"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <div class="sidebar-label">Main</div>
+                <div class="nav-item active" onclick="navigate('dashboard')"><span class="icon">📊</span><span
+                        class="mr-text">डॅशबोर्ड</span><span class="en-text" style="display:none">Dashboard</span></div>
+                <div class="nav-item" onclick="navigate('profile')"><span class="icon">👤</span><span
+                        class="mr-text">माझी माहिती</span><span class="en-text" style="display:none">My Profile</span>
+                </div>
+                <div class="nav-item" onclick="navigate('attendance')"><span class="icon">✅</span><span
+                        class="mr-text">उपस्थिती</span><span class="en-text" style="display:none">Attendance</span>
+                </div>
+                <div class="nav-item" onclick="navigate('fees')"><span class="icon">💰</span><span class="mr-text">फी
+                        माहिती</span><span class="en-text" style="display:none">Fees</span></div>
+                <div class="nav-item" onclick="navigate('updates')"><span class="icon">📢</span><span
+                        class="mr-text">अपडेट्स</span><span class="en-text" style="display:none">Updates</span><span
+                        class="nav-badge" id="updatesBadge" style="display:none">0</span></div>
+                <div class="nav-item" onclick="navigate('progress')"><span class="icon">📈</span><span
+                        class="mr-text">प्रगती</span><span class="en-text" style="display:none">Progress</span></div>
+                <div class="nav-item" onclick="navigate('timetable')"><span class="icon">📅</span><span
+                        class="mr-text">वेळापत्रक</span><span class="en-text" style="display:none">Timetable</span>
+                </div>
+                <div class="sidebar-divider"></div>
+                <div class="sidebar-label">Institution</div>
+                <div class="nav-item" onclick="navigate('institution')"><span class="icon">🏫</span><span
+                        class="mr-text">संस्था</span><span class="en-text" style="display:none">Institution</span></div>
+                <div class="nav-item" onclick="navigate('contact')"><span class="icon">📞</span><span
+                        class="mr-text">संपर्क</span><span class="en-text" style="display:none">Contact</span></div>
+                <div class="sidebar-divider"></div>
+                <div class="logout-btn" onclick="doLogout()">🚪 <span class="mr-text">बाहेर पडा</span><span
+                        class="en-text" style="display:none">Logout</span></div>
+            </div>
+
+            <div class="main-content" id="mainContent">
+
+                <!-- DASHBOARD -->
+                <div class="view active" id="view-dashboard">
+                    <div class="page-header">
+                        <div class="page-title-mr" id="dashWelcomeMr">🙏 स्वागत आहे!</div>
+                        <div class="page-title" style="font-size:18px;">Welcome back! Today is <span
+                                id="todayDate"></span></div>
+                    </div>
+                    <div class="stats-row stagger">
+                        <div class="stat-card">
+                            <div class="stat-icon">✅</div>
+                            <div class="stat-num">—</div>
+                            <div class="stat-label mr-text">उपस्थिती</div>
+                            <div class="stat-label en-text" style="display:none">Attendance</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">💰</div>
+                            <div class="stat-num" style="font-size:22px;color:var(--saffron);">—</div>
+                            <div class="stat-label mr-text">फी स्थिती</div>
+                            <div class="stat-label en-text" style="display:none">Fee Status</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">📚</div>
+                            <div class="stat-num" id="statGrade">—</div>
+                            <div class="stat-label mr-text">इयत्ता</div>
+                            <div class="stat-label en-text" style="display:none">Class</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">🏅</div>
+                            <div class="stat-num" id="statAdmStatus">✓</div>
+                            <div class="stat-label mr-text">अर्ज स्थिती</div>
+                            <div class="stat-label en-text" style="display:none">Admission</div>
+                            <div class="stat-change" style="color:var(--green);">Approved</div>
+                        </div>
+                    </div>
+                    <div class="two-col">
+                        <div class="card">
+                            <div class="card-header">
+                                <div>
+                                    <div class="card-title mr-text">अर्ज माहिती</div>
+                                    <div class="card-title en-text" style="display:none">Application Info</div>
+                                </div><button class="card-action" onclick="navigate('profile')">View All →</button>
+                            </div>
+                            <div class="card-body" id="dashAdmInfo">
+                                <p style="color:var(--text3);">Loading...</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <div>
+                                    <div class="card-title mr-text">प्रगती</div>
+                                    <div class="card-title en-text" style="display:none">Progress</div>
+                                </div><button class="card-action" onclick="navigate('progress')">View All →</button>
+                            </div>
+                            <div class="card-body" id="dashProgress">
+                                <p style="color:var(--text3);">Loading...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PROFILE -->
+                <div class="view" id="view-profile">
+                    <div class="page-header">
+                        <div class="page-title-mr">माझी माहिती</div>
+                        <div class="page-subtitle" id="profileSub"></div>
+                    </div>
+                    <div class="profile-hero">
+                        <div class="profile-avatar" id="profileAvatar">?</div>
+                        <div>
+                            <div class="profile-name" id="profileName">—</div>
+                            <div style="font-family:'Tiro Devanagari Marathi',serif;font-size:16px;color:var(--text2);margin-top:2px;"
+                                id="profileNameMr">—</div>
+                            <div class="profile-id" id="profileId"></div>
+                            <div class="profile-class" id="profileClass"></div>
+                            <div class="profile-tags" id="profileTags"></div>
+                        </div>
+                    </div>
+                    <div class="profile-grid">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title mr-text">वैयक्तिक माहिती</div>
+                                <div class="card-title en-text" style="display:none">Personal Info</div>
+                            </div>
+                            <div class="card-body">
+                                <div class="info-list" id="profilePersonal"></div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title mr-text">पत्ता व नातेवाईक</div>
+                                <div class="card-title en-text" style="display:none">Address & Relative</div>
+                            </div>
+                            <div class="card-body">
+                                <div class="info-list" id="profileAddress"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ATTENDANCE -->
+                <div class="view" id="view-attendance">
+                    <div class="page-header">
+                        <div class="page-title-mr">उपस्थिती नोंद</div>
+                        <div class="page-title" style="font-size:18px;">Attendance Record</div>
+                    </div>
+                    <div class="two-col">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title">Monthly Calendar</div>
+                            </div>
+                            <div class="card-body">
+                                <div class="mini-calendar" id="calGrid"></div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title mr-text">वार्षिक सारांश</div>
+                                <div class="card-title en-text" style="display:none">Yearly Summary</div>
+                            </div>
+                            <div class="card-body">
+                                <div class="attendance-ring-wrap">
+                                    <div class="ring-chart"><svg viewBox="0 0 100 100">
+                                            <circle class="ring-bg" cx="50" cy="50" r="40" />
+                                            <circle class="ring-fill ring-present" cx="50" cy="50" r="40"
+                                                stroke-dasharray="0 251" id="annualRing" />
+                                        </svg>
+                                        <div class="ring-label"><span class="ring-pct">—</span><span
+                                                class="ring-sub">Annual</span></div>
+                                    </div>
+                                    <div class="att-legend">
+                                        <div class="att-leg-item"><span class="leg-dot leg-green"></span><span
+                                                class="leg-name">Present Days</span><span class="leg-val">—</span></div>
+                                        <div class="att-leg-item"><span class="leg-dot leg-red"></span><span
+                                                class="leg-name">Absent Days</span><span class="leg-val">—</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="coming-soon-card" style="margin-top:20px;">
+                        <div class="cs-pulse">📊</div>
+                        <div class="cs-title mr-text">विस्तृत अहवाल</div>
+                        <div class="cs-title en-text" style="display:none">Detailed Reports</div>
+                        <div class="cs-sub mr-text">मासिक PDF अहवाल — लवकरच येत आहे</div>
+                        <div class="cs-sub en-text" style="display:none">Monthly PDF reports — Coming Soon</div>
+                    </div>
+                </div>
+
+                <!-- FEES -->
+                <div class="view" id="view-fees">
+                    <div class="page-header">
+                        <div class="page-title-mr">फी व देणी</div>
+                        <div class="page-title" style="font-size:18px;">Fees & Payments</div>
+                    </div>
+                    <div class="coming-soon-card">
+                        <div class="cs-pulse">💳</div>
+                        <div class="cs-title mr-text">ऑनलाइन फी भरणा — लवकरच!</div>
+                        <div class="cs-title en-text" style="display:none">Online Fee Payment — Coming Soon!</div>
+                        <div class="cs-sub mr-text">UPI / Net Banking / Card — मोबाईल अॅपमध्ये लवकरच उपलब्ध</div>
+                        <div class="cs-sub en-text" style="display:none">UPI / Net Banking / Card — Available soon in
+                            mobile app</div>
+                        <div style="margin-top:16px;"><button class="btn-portal btn-saffron"
+                                onclick="showToast('📞','फी माहिती','संपर्क: 7875878761')">📞 ऑफिसशी संपर्क करा</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- UPDATES -->
+                <div class="view" id="view-updates">
+                    <div class="page-header">
+                        <div class="page-title-mr">अपडेट्स व सूचना</div>
+                        <div class="page-title" style="font-size:18px;">Updates & Notices</div>
+                    </div>
+                    <div class="updates-feed stagger" id="updatesFeed">
+                        <p style="color:var(--text3);text-align:center;padding:30px;">Loading updates...</p>
+                    </div>
+                </div>
+
+                <!-- PROGRESS -->
+                <div class="view" id="view-progress">
+                    <div class="page-header">
+                        <div class="page-title-mr">शैक्षणिक प्रगती</div>
+                        <div class="page-title" style="font-size:18px;">Academic Progress</div>
+                    </div>
+                    <div class="three-col stagger" id="progressCards">
+                        <p style="color:var(--text3);grid-column:1/-1;text-align:center;padding:30px;">Loading...</p>
+                    </div>
+                </div>
+
+                <!-- TIMETABLE -->
+                <div class="view" id="view-timetable">
+                    <div class="page-header">
+                        <div class="page-title-mr">दैनंदिन वेळापत्रक</div>
+                        <div class="page-subtitle" id="ttSub"></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body" style="padding:0;overflow-x:auto;">
+                            <table class="fees-table" style="min-width:600px;">
+                                <thead>
+                                    <tr>
+                                        <th>वेळ / Time</th>
+                                        <th>उपक्रम / Activity</th>
+                                        <th>ठिकाण / Location</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="color:var(--saffron);font-weight:700;">5:00 AM</td>
+                                        <td>🌅 काकड आरती / Kakad Aarti</td>
+                                        <td>मंदिर / Temple</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color:var(--saffron);font-weight:700;">6:00 AM</td>
+                                        <td>🙏 प्रार्थना / Prayer</td>
+                                        <td>सभागृह / Hall</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color:var(--saffron);font-weight:700;">7:00 AM</td>
+                                        <td>🍽️ नाश्ता / Breakfast</td>
+                                        <td>भोजनकक्ष</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color:var(--saffron);font-weight:700;">8:00–12:00</td>
+                                        <td>📚 शालेय अभ्यास</td>
+                                        <td>वर्गखोली</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color:var(--saffron);font-weight:700;">12:00–1:00</td>
+                                        <td>🍛 जेवण / Lunch</td>
+                                        <td>भोजनकक्ष</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color:var(--saffron);font-weight:700;">1:00–2:00</td>
+                                        <td>😴 विश्रांती / Rest</td>
+                                        <td>वसतीगृह</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color:var(--saffron);font-weight:700;">2:00–4:00</td>
+                                        <td>📖 अध्यात्मिक शिक्षण</td>
+                                        <td>वर्गखोली</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color:var(--saffron);font-weight:700;">4:00–5:00</td>
+                                        <td>⚽ क्रीडा / Sports</td>
+                                        <td>मैदान</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color:var(--saffron);font-weight:700;">6:00 PM</td>
+                                        <td>🕯️ आरती / Aarti</td>
+                                        <td>मंदिर</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color:var(--saffron);font-weight:700;">7:00–8:00</td>
+                                        <td>🍽️ जेवण / Dinner</td>
+                                        <td>भोजनकक्ष</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color:var(--saffron);font-weight:700;">8:00–9:00</td>
+                                        <td>📝 स्वयंअध्ययन</td>
+                                        <td>अभ्यासिका</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color:var(--saffron);font-weight:700;">9:30 PM</td>
+                                        <td>🌙 झोप / Sleep</td>
+                                        <td>वसतीगृह</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- INSTITUTION -->
+                <div class="view" id="view-institution">
+                    <div class="page-header">
+                        <div class="page-title-mr">संस्थेची माहिती</div>
+                        <div class="page-title" style="font-size:18px;">Institution Information</div>
+                    </div>
+                    <div class="two-col">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title">🏫 About</div>
+                            </div>
+                            <div class="card-body">
+                                <div class="info-list">
+                                    <div class="info-row"><span class="info-key">Institution</span><span
+                                            class="info-val" style="font-family:'Tiro Devanagari Marathi',serif;">श्री
+                                            संजीवन वारकरी शिक्षण संस्था</span></div>
+                                    <div class="info-row"><span class="info-key">Founder</span><span
+                                            class="info-val">H.B.P. Shri. Shrikrishna Maharaj Bhosale</span></div>
+                                    <div class="info-row"><span class="info-key">Address</span><span
+                                            class="info-val">Kelgaon Road, Alandi Devachi, Pune</span></div>
+                                    <div class="info-row"><span class="info-key">Contact</span><span
+                                            class="info-val">7875878761 / 7875878460</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title">🚔 Emergency</div>
+                            </div>
+                            <div class="card-body">
+                                <div class="info-list">
+                                    <div class="info-row"><span class="info-key">Police</span><span class="info-val"
+                                            style="color:var(--red);">100</span></div>
+                                    <div class="info-row"><span class="info-key">Khed Police</span><span
+                                            class="info-val">02135-222033</span></div>
+                                    <div class="info-row"><span class="info-key">Ambulance</span><span
+                                            class="info-val">108</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CONTACT -->
+                <div class="view" id="view-contact">
+                    <div class="page-header">
+                        <div class="page-title-mr">संपर्क करा</div>
+                        <div class="page-title" style="font-size:18px;">Contact Us</div>
+                    </div>
+                    <div class="coming-soon-card">
+                        <div class="cs-pulse">💬</div>
+                        <div class="cs-title mr-text">शिक्षक-पालक चॅट — लवकरच!</div>
+                        <div class="cs-title en-text" style="display:none">Parent-Teacher Chat — Coming Soon</div>
+                        <div class="cs-sub">संपर्क: <strong style="color:var(--gold2);">7875878761 / 7875878460</strong>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="student.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="mr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel — श्री संजीवन वारकरी</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Marathi:ital@0;1&family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="notification" id="notification"></div>
+
+    <div class="lang-bar">
+        <span
+            style="color:rgba(255,255,255,0.4);font-size:12px;font-family:'Cinzel',serif;letter-spacing:2px;">LANGUAGE:</span>
+        <button class="lang-btn active" id="btn-mr" onclick="setLang('mr')">मराठी</button>
+        <button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button>
+    </div>
+
+    <div
+        style="background:var(--dark-brown);padding:10px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+        <a href="index.html" class="back-link" style="margin:0;color:var(--light-gold);">← <span
+                class="mr-text">मुख्यपृष्ठ</span><span class="en-text">Home</span></a>
+        <div id="adminUserBar" style="color:rgba(255,255,255,0.7);font-size:13px;"></div>
+        <span onclick="logout()"
+            style="cursor:pointer;color:var(--light-gold);font-size:13px;font-family:'Cinzel',serif;letter-spacing:1px;">🚪
+            <span class="mr-text">बाहेर पडा</span><span class="en-text">Logout</span></span>
+    </div>
+
+
+
+
+    <div class="section-alt" style="padding-top:30px;">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="section-tag">Admin Panel / प्रशासन</span>
+                <div class="section-title mr-text">प्रशासन नियंत्रण केंद्र</div>
+                <div class="section-title-en en-text">Admin Control Panel</div>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="admin-panel">
+                <div class="admin-header">
+                    <span class="admin-title"><span class="mr-text">🔐 प्रशासन पॅनेल</span><span class="en-text">🔐
+                            Admin Panel</span></span>
+                    <span class="admin-demo-label">LIVE DATA</span>
+                </div>
+                <div class="admin-body">
+                    <div class="admin-sidebar">
+                        <div class="admin-nav-item active" onclick="switchAdminTab('admissions', this)">📝 <span
+                                class="mr-text">प्रवेश अर्ज</span><span class="en-text">Admissions</span></div>
+                        <div class="admin-nav-item" onclick="switchAdminTab('students',this)">👨‍🎓 <span
+                                class="mr-text">विद्यार्थी</span><span class="en-text">Students</span></div>
+
+                        <div class="admin-nav-item" onclick="switchAdminTab('progress',this)">📊
+                            <span class="mr-text">प्रगती</span>
+                            <span class="en-text">Progress</span>
+                        </div>
+                        <div class="admin-nav-item" onclick="switchAdminTab('gallery')">🖼 <span
+                                class="mr-text">गॅलरी</span><span class="en-text">Gallery</span></div>
+                        <div class="admin-nav-item" onclick="switchAdminTab('updates')">📢 <span
+                                class="mr-text">अपडेट्स</span><span class="en-text">Updates</span></div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <div class="admin-content">
+
+                        <!-- TAB: Admissions -->
+                        <div id="tab-admissions" class="admin-tab-content">
+                            <div class="admin-stats">
+                                <div class="admin-stat-card">
+                                    <div class="admin-stat-num" id="statTotal">0</div>
+                                    <div class="admin-stat-label mr-text">एकूण अर्ज</div>
+                                    <div class="admin-stat-label en-text">Total</div>
+                                </div>
+                                <div class="admin-stat-card">
+                                    <div class="admin-stat-num" id="statPending">0</div>
+                                    <div class="admin-stat-label mr-text">प्रलंबित</div>
+                                    <div class="admin-stat-label en-text">Pending</div>
+                                </div>
+                                <div class="admin-stat-card">
+                                    <div class="admin-stat-num" id="statApproved">0</div>
+                                    <div class="admin-stat-label mr-text">मंजूर</div>
+                                    <div class="admin-stat-label en-text">Approved</div>
+                                </div>
+                            </div>
+                            <table class="mini-table">
+                                <thead>
+                                    <tr>
+                                        <th><span class="mr-text">नाव</span><span class="en-text">Name</span></th>
+                                        <th><span class="mr-text">इयत्ता</span><span class="en-text">Grade</span></th>
+                                        <th><span class="mr-text">वडील</span><span class="en-text">Father</span></th>
+                                        <th><span class="mr-text">मोबाईल</span><span class="en-text">Mobile</span></th>
+                                        <th><span class="mr-text">स्थिती</span><span class="en-text">Status</span></th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="adminAdmissionsBody">
+                                    <tr>
+                                        <td colspan="6"
+                                            style="text-align:center;padding:30px;color:rgba(255,255,255,0.3);">
+                                            Loading...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- TAB: Students -->
+                        <div id="tab-students" class="admin-tab-content" style="display:none;">
+                            <div class="admin-stats">
+                                <div class="admin-stat-card">
+                                    <div class="admin-stat-num" id="statStudents">0</div>
+                                    <div class="admin-stat-label mr-text">एकूण विद्यार्थी</div>
+                                    <div class="admin-stat-label en-text">Total Students</div>
+                                </div>
+                            </div>
+                            <table class="mini-table">
+                                <thead>
+                                    <tr>
+                                        <th><span class="mr-text">नाव</span><span class="en-text">Name</span></th>
+                                        <th>Email</th>
+                                        <th><span class="mr-text">मोबाईल</span><span class="en-text">Mobile</span></th>
+                                        <th><span class="mr-text">नोंदणी दिनांक</span><span
+                                                class="en-text">Registered</span></th>
+                                        <th>Action</th> <!-- NEW -->
+                                    </tr>
+                                </thead>
+                                <tbody id="studentsListBody">
+                                    <tr>
+                                        <td colspan="5" style="text-align:center;padding:30px;">Loading...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+
+
+
+                        <!-- TAB: Progress -->
+                        <div id="tab-progress" class="admin-tab-content" style="display:none;">
+
+                            <div style="margin-bottom:15px;font-weight:bold;">
+                                📊 Update Student Progress
+                            </div>
+
+                            <table class="mini-table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Marathi</th>
+                                        <th>English</th>
+                                        <th>Spiritual</th>
+                                        <th>Tables</th>
+                                        <th>Note</th>
+                                        <th>Save</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="progressTableBody">
+                                    <tr>
+                                        <td colspan="7" style="text-align:center;padding:20px;">Loading...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                        <!-- TAB: Gallery -->
+                        <div id="tab-gallery" class="admin-tab-content" style="display:none;">
+                            <div
+                                style="background:rgba(255,255,255,0.05);border:1px solid rgba(212,160,23,0.2);border-radius:6px;padding:20px;margin-bottom:24px;">
+                                <div
+                                    style="font-size:14px;color:var(--light-gold);margin-bottom:12px;font-family:'Cinzel',serif;letter-spacing:1px;">
+                                    <span class="mr-text">छायाचित्र जोडा</span><span class="en-text">Add Image</span>
+                                </div>
+                                <form id="galleryUploadForm"
+                                    style="display:flex;gap:12px;flex-wrap:wrap;align-items:end;">
+                                    <div class="form-group" style="flex:1;min-width:140px;"><label
+                                            style="font-size:11px;color:rgba(255,255,255,0.5);"><span
+                                                class="mr-text">शीर्षक मराठी</span><span class="en-text">Title
+                                                (MR)</span></label><input type="text" name="titleMr" class="admin-input"
+                                            placeholder="भजन कार्यक्रम"></div>
+                                    <div class="form-group" style="flex:1;min-width:140px;"><label
+                                            style="font-size:11px;color:rgba(255,255,255,0.5);"><span
+                                                class="mr-text">शीर्षक इंग्रजी</span><span class="en-text">Title
+                                                (EN)</span></label><input type="text" name="titleEn" class="admin-input"
+                                            placeholder="Bhajan Program"></div>
+                                    <div class="form-group"><label
+                                            style="font-size:11px;color:rgba(255,255,255,0.5);"><span
+                                                class="mr-text">छायाचित्र</span><span
+                                                class="en-text">Image</span></label><input type="file" name="image"
+                                            accept=".jpg,.jpeg,.png,.webp" class="admin-file-input"></div>
+                                    <button type="button" class="btn-primary" style="padding:10px 20px;font-size:12px;"
+                                        onclick="handleGalleryUpload()"><span class="mr-text">जोडा</span><span
+                                            class="en-text">Add</span></button>
+                                </form>
+                            </div>
+                            <div id="adminGalleryGrid" class="admin-gallery-grid"></div>
+                        </div>
+
+                        <!-- TAB: Updates -->
+                        <div id="tab-updates" class="admin-tab-content" style="display:none;">
+                            <div
+                                style="background:rgba(255,255,255,0.05);border:1px solid rgba(212,160,23,0.2);border-radius:6px;padding:20px;margin-bottom:24px;">
+                                <div
+                                    style="font-size:14px;color:var(--light-gold);margin-bottom:12px;font-family:'Cinzel',serif;letter-spacing:1px;">
+                                    <span class="mr-text">अपडेट जोडा</span><span class="en-text">Add Update</span>
+                                </div>
+                                <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+                                    <div class="form-group"><label
+                                            style="font-size:11px;color:rgba(255,255,255,0.5);"><span
+                                                class="mr-text">शीर्षक मराठी</span><span class="en-text">Title
+                                                (MR)</span></label><input type="text" id="updTitleMr"
+                                            class="admin-input" placeholder="नवीन शैक्षणिक वर्ष"></div>
+                                    <div class="form-group"><label
+                                            style="font-size:11px;color:rgba(255,255,255,0.5);"><span
+                                                class="mr-text">शीर्षक इंग्रजी</span><span class="en-text">Title
+                                                (EN)</span></label><input type="text" id="updTitleEn"
+                                            class="admin-input" placeholder="New Academic Year"></div>
+                                    <div class="form-group"><label
+                                            style="font-size:11px;color:rgba(255,255,255,0.5);"><span
+                                                class="mr-text">मजकूर मराठी</span><span class="en-text">Body
+                                                (MR)</span></label><textarea id="updBodyMr" class="admin-textarea"
+                                            rows="3" placeholder="मजकूर लिहा..."></textarea></div>
+                                    <div class="form-group"><label
+                                            style="font-size:11px;color:rgba(255,255,255,0.5);"><span
+                                                class="mr-text">मजकूर इंग्रजी</span><span class="en-text">Body
+                                                (EN)</span></label><textarea id="updBodyEn" class="admin-textarea"
+                                            rows="3" placeholder="Write text..."></textarea></div>
+                                    <div class="form-group"><label
+                                            style="font-size:11px;color:rgba(255,255,255,0.5);"><span
+                                                class="mr-text">दिनांक</span><span class="en-text">Date
+                                                Label</span></label><input type="text" id="updDateLabel"
+                                            class="admin-input" placeholder="MARCH 2025"></div>
+                                    <div style="display:flex;align-items:end;"><button class="btn-primary"
+                                            style="padding:10px 20px;font-size:12px;" onclick="handleAddUpdate()"><span
+                                                class="mr-text">जोडा</span><span class="en-text">Add</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="adminUpdatesList"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Detail Modal -->
+    <div class="modal-overlay" id="detailModal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <span
+                    style="font-family:'Cinzel',serif;font-size:14px;color:var(--light-gold);letter-spacing:2px;"><span
+                        class="mr-text">अर्जाची संपूर्ण माहिती</span><span class="en-text">Full Application
+                        Details</span></span>
+                <span onclick="closeModal()"
+                    style="cursor:pointer;font-size:20px;color:rgba(255,255,255,0.5);">&times;</span>
+            </div>
+            <div class="modal-body" id="detailModalBody"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

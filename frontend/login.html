@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="mr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>लॉगिन — श्री संजीवन वारकरी</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Marathi:ital@0;1&family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="login_body">
+
+
+    <div class="notification" id="notification"></div>
+
+    <!-- <section class="section " style="max-width:1000px;">
+
+        <a href="index.html" class="back-link">← <span class="mr-text">मुख्यपृष्ठ</span><span
+                class="en-text">Home</span></a>
+
+        <div class="section-header scroll-reveal">
+            <span class="section-tag">Login / लॉगिन</span>
+            <div class="section-title mr-text">लॉगिन / नोंदणी</div>
+            <div class="section-title-en en-text">Login / Register</div>
+            <div class="section-divider"></div>
+        </div>
+
+
+
+        <div class="auth-container scroll-reveal">
+
+
+            < Login Card -->
+    <!-- <div class="auth-card" id="loginCard">
+
+                <div class="auth-card-header">
+                    <div class="auth-card-title mr-text">🔐 लॉगिन करा</div>
+                    <div class="auth-card-title en-text">🔐 Login</div>
+                    <div class="auth-card-subtitle">USER LOGIN / वापरकर्ता लॉगिन</div>
+                </div> -->
+
+    <!-- 
+                <div class="auth-card-body"> -->
+
+    <!-- <div class="auth-role-select">
+                        <div class="role-chip active" onclick="selectRole(this)"><span
+                                class="mr-text">विद्यार्थी</span><span class="en-text">Student</span></div> -->
+    <!-- <div class="role-chip" onclick="selectRole(this)"><span class="mr-text">कर्मचारी</span><span
+                                class="en-text">Staff</span></div> -->
+    <!-- <div class="role-chip" onclick="selectRole(this)"><span class="mr-text">प्रशासक</span><span
+                                class="en-text">Admin</span></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label><span class="mr-text">ईमेल</span><span class="en-text"> / Email</span></label>
+                        <input type="email" id="loginEmail" placeholder="example@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label><span class="mr-text">पासवर्ड</span><span class="en-text"> / Password</span></label>
+                        <input type="password" id="loginPassword" placeholder="••••••••">
+                    </div>
+
+                    <button class="btn-primary" style="width:100%" onclick="handleLogin(event)">
+                        <span class="mr-text">लॉगिन करा</span><span class="en-text">Login</span>
+                    </button>
+                </div>
+                <div class="form-group">
+                    <a href="forgot.html" class="forgot-link">
+                        <span class="mr-text">पासवर्ड विसरलात?</span>
+                        <span class="en-text">Forgot Password?</span>
+                    </a>
+                </div>
+            </div> -->
+
+    <!-- Register Card -->
+    <!-- <div class="auth-card" id="registerCard" style="display: none;">
+                <div class="auth-card-header">
+                    <div class="auth-card-title mr-text">📝 नवीन नोंदणी</div>
+                    <div class="auth-card-title en-text">📝 Register</div>
+                    <div class="auth-card-subtitle">NEW REGISTRATION / नवीन नोंदणी</div>
+                </div>
+                <div class="auth-card-body">
+                    <div class="auth-role-select" id="registerRole">
+                        <div class="role-chip active" onclick="selectRole(this)"><span
+                                class="mr-text">विद्यार्थी</span><span class="en-text">Student</span></div> -->
+    <!-- <div class="role-chip" onclick="selectRole(this)"><span class="mr-text">कर्मचारी</span><span
+                                class="en-text">Staff</span></div> -->
+    <!-- <div class="role-chip" onclick="selectRole(this)"><span class="mr-text">प्रशासक</span><span
+                                class="en-text">Admin</span></div>
+                    </div>
+                    <div class="form-group">
+                        <label><span class="mr-text">पूर्ण नाव</span><span class="en-text"> / Full Name</span></label>
+                        <input type="text" id="regFullName" placeholder="Your Full Name">
+                    </div>
+                    <div class="form-group">
+                        <label><span class="mr-text">मोबाईल नं.</span><span class="en-text"> / Mobile</span></label>
+                        <input type="tel" id="regMobile" placeholder="9XXXXXXXXX">
+                    </div>
+                    <div class="form-group">
+                        <label><span class="mr-text">ईमेल</span><span class="en-text"> / Email</span></label>
+                        <input type="email" id="regEmail" placeholder="example@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label><span class="mr-text">पासवर्ड</span><span class="en-text"> / Password</span></label>
+                        <input type="password" id="regPassword" placeholder="••••••••">
+                    </div>
+                    <button class="btn-primary" style="width:100%;background:var(--green-leaf)"
+                        onclick="handleRegister()">
+                        <span class="mr-text">नोंदणी करा</span><span class="en-text">Register</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+
+
+
+
+
+
+    <section class="section" style="max-width:1000px;">
+
+
+        <div class="header">
+            <!-- Back Link -->
+            <a href="index.html" class="back-link">
+                ← <span class="mr-text">मुख्यपृष्ठ</span>
+                <span class="en-text">Home</span>
+            </a>
+
+            <!-- Header -->
+            <div class="section-header scroll-reveal">
+                <span class="section-tag">Login / लॉगिन</span>
+                <div class="section-title mr-text">लॉगिन / नोंदणी</div>
+                <div class="section-title-en en-text">Login / Register</div>
+                <div class="section-divider"></div>
+            </div>
+        </div>
+
+
+        <!-- 🔥 Toggle Buttons -->
+        <div class="auth-toggle">
+            <button id="loginBtn" class="active-btn" onclick="showLogin()">Login / लॉगिन</button>
+            <button id="registerBtn" onclick="showRegister()">Register / नोंदणी</button>
+        </div>
+
+        <!-- Cards Container -->
+        <div class="auth-container scroll-reveal">
+
+            <!-- ✅ Login Card -->
+            <div class="auth-card" id="loginCard">
+
+                <div class="auth-card-header">
+                    <div class="auth-card-title mr-text">🔐 लॉगिन करा</div>
+                    <div class="auth-card-title en-text">🔐 Login</div>
+                    <div class="auth-card-subtitle">USER LOGIN / वापरकर्ता लॉगिन</div>
+                </div>
+
+                <div class="auth-card-body">
+
+                    <div class="auth-role-select">
+                        <div class="role-chip active" onclick="selectRole(this)">
+                            <span class="mr-text">विद्यार्थी</span>
+                            <span class="en-text">Student</span>
+                        </div>
+
+                        <div class="role-chip" onclick="selectRole(this)">
+                            <span class="mr-text">प्रशासक</span>
+                            <span class="en-text">Admin</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>ईमेल / Email</label>
+                        <input type="email" id="loginEmail" placeholder="example@email.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label>पासवर्ड / Password</label>
+                        <input type="password" id="loginPassword" placeholder="••••••••">
+                    </div>
+
+                    <button class="btn-primary" style="width:100%" onclick="handleLogin(event)">
+                        लॉगिन करा / Login
+                    </button>
+
+                    <div class="form-group" style="text-align:center;">
+                        <a href="forgot.html" class="forgot-link">
+                            पासवर्ड विसरलात? / Forgot Password?
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ✅ Register Card -->
+            <div class="auth-card" id="registerCard" style="display:none;">
+
+                <div class="auth-card-header">
+                    <div class="auth-card-title mr-text">📝 नवीन नोंदणी</div>
+                    <div class="auth-card-title en-text">📝 Register</div>
+                    <div class="auth-card-subtitle">NEW REGISTRATION / नवीन नोंदणी</div>
+                </div>
+
+                <div class="auth-card-body">
+
+                    <div class="auth-role-select" id="registerRole">
+                        <div class="role-chip active" onclick="selectRole(this)">
+                            <span class="mr-text">विद्यार्थी</span>
+                            <span class="en-text">Student</span>
+                        </div>
+
+                        <div class="role-chip" onclick="selectRole(this)">
+                            <span class="mr-text">प्रशासक</span>
+                            <span class="en-text">Admin</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>पूर्ण नाव / Full Name</label>
+                        <input type="text" id="regFullName" placeholder="Your Full Name">
+                    </div>
+
+                    <div class="form-group">
+                        <label>मोबाईल नं. / Mobile</label>
+                        <input type="tel" id="regMobile" placeholder="9XXXXXXXXX">
+                    </div>
+
+                    <div class="form-group">
+                        <label>ईमेल / Email</label>
+                        <input type="email" id="regEmail" placeholder="example@email.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label>पासवर्ड / Password</label>
+                        <input type="password" id="regPassword" placeholder="••••••••">
+                    </div>
+
+                    <button class="btn-primary" style="width:100%; background:var(--green-leaf)"
+                        onclick="handleRegister()">
+                        नोंदणी करा / Register
+                    </button>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>

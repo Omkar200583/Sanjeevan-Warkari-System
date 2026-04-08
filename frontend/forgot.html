@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="mr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>पासवर्ड रीसेट — Forgot Password</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 30px;
+        }
+
+        input,
+        button {
+            margin: 10px 0;
+            padding: 8px;
+            width: 100%;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .forgot-link {
+            display: block;
+            margin-top: 5px;
+            font-size: 0.9em;
+            text-decoration: underline;
+            color: var(--primary-color);
+            cursor: pointer;
+        }
+
+        .forgot-link:hover {
+            color: var(--green-leaf);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="notification">
+    </div>
+
+    <section class="section" style="max-width:500px;">
+        <div class="section-header">
+            <span class="section-tag">Forgot Password / पासवर्ड विसरलात</span>
+            <div class="section-title mr-text">ईमेल प्रविष्ट करा</div>
+            <div class="section-title-en en-text">Enter your email</div>
+        </div>
+
+        <div class="auth-card">
+            <div class="auth-card-body">
+                <div class="form-group">
+                    <label>Email / ईमेल</label>
+                    <input type="email" id="forgotEmail" placeholder="example@email.com">
+                </div>
+                <button class="btn-primary" style="width:100%" onclick="handleForgot()">
+                    <span class="mr-text">OTP पाठवा</span>
+                    <span class="en-text">Send OTP</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        async function handleForgot() {
+            const email = document.getElementById('forgotEmail').value.trim();
+            if (!email) return showNotification('ईमेल भरा / Enter email', 'error');
+
+            try {
+                const res = await
+                    fetch('http://localhost:8080/api/auth/forgot', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ email })
+                    });
+
+                const data = await res.json();
+                if (data.success) {
+                    showNotification('OTP पाठवला गेला आहे. कृपया तपासा.', 'success');
+                    setTimeout(() => {
+                        window.location.href = `/reset.html?email=${email}`;
+                    }, 1500);
+                } else {
+                    showNotification(data.message, 'error');
+                }
+            } catch (err) {
+                showNotification('सर्व्हर त्रुटी / Server Error', 'error');
+            }
+        }
+
+
+        function showNotification(message, type = 'success') {
+            const box = document.getElementById('notification');
+
+            box.innerText = message;
+            box.style.display = 'block';
+            box.style.padding = '10px';
+            box.style.margin = '10px 0';
+            box.style.borderRadius = '5px';
+
+            if (type === 'error') {
+                box.style.background = '#ff4d4d';
+                box.style.color = '#fff';
+            } else {
+                box.style.background = '#4CAF50';
+                box.style.color = '#fff';
+            }
+
+            setTimeout(() => {
+                box.style.display = 'none';
+            }, 3000);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="mr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>श्री संजीवन वारकरी शिक्षण संस्था</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Marathi:ital@0;1&family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="notification" id="notification"></div>
+  <div class="lang-bar">
+    <span
+      style="color:rgba(255,255,255,0.4);font-size:12px;font-family:'Cinzel',serif;letter-spacing:2px;">LANGUAGE:</span>
+    <button class="lang-btn active" id="btn-mr" onclick="setLang('mr')">मराठी</button>
+    <button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button>
+  </div>
+
+
+
+  <header>
+    <div class="header-border-top"></div>
+    <div class="header-pattern"></div>
+
+    <div class="header-emblem-container">
+      <!-- Left Image -->
+      <img src="./OIP.webp" alt="Dnyaneshwar Maharaj" class="left">
+
+      <!-- Middle Text -->
+      <div class="header-text">
+        <div class="header-marathi">श्री संजीवन वारकरी शिक्षण संस्था</div>
+        <div class="header-english">Shri Sanjeevan Warkari Educational Institution</div>
+        <div class="header-sub">आळंदी देवाची, ता. खेड, जि. पुणे</div>
+      </div>
+
+      <!-- Right Image -->
+      <img src="./OIP (1).webp" alt="Tukaram Maharaj" class="right">
+    </div>
+
+
+    <div class="header-divider"></div>
+    <div class="header-info-bar">
+      <div class="info-item"><span class="icon">📍</span> केळगांव रोड, आळंदी देवाची</div>
+      <div class="info-item"><span class="icon">📞</span> 7875878761 / 7875878460</div>
+      <div class="info-item"><span class="icon">🙏</span> ह.भ.प.श्री. श्रीकृष्ण महाराज भोसले</div>
+    </div>
+  </header>
+
+  <nav>
+
+    <!-- <nav>
+      <div class="hamburger" id="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="nav-inner">
+        <a href="#home" class="nav-link"><span class="mr-text">मुख्यपृष्ठ</span><span class="en-text">Home</span></a>
+        <a href="#about" class="nav-link"><span class="mr-text">संस्थेबद्दल</span><span class="en-text">About</span></a>
+        <a href="#timetable" class="nav-link"><span class="mr-text">वेळापत्रक</span><span
+            class="en-text">Timetable</span></a>
+        <a href="form.html" class="nav-link"><span class="mr-text">प्रवेश अर्ज</span><span
+            class="en-text">Admission</span></a>
+        <a href="#gallery" class="nav-link"><span class="mr-text">गॅलरी</span><span class="en-text">Gallery</span></a>
+        <a href="#updates" class="nav-link"><span class="mr-text">अपडेट्स</span><span class="en-text">Updates</span></a>
+        <a href="#contact" class="nav-link"><span class="mr-text">संपर्क</span><span class="en-text">Contact</span></a>
+        <a href="login.html" class="nav-link" id="navAuthLink"><span class="mr-text">लॉगिन</span><span
+            class="en-text">Login</span></a>
+      </div>
+    </nav> -->
+
+    <div class="nav-inner">
+      <a href="#home" class="nav-link"><span class="mr-text">मुख्यपृष्ठ</span><span class="en-text">Home</span></a>
+      <a href="#about" class="nav-link"><span class="mr-text">संस्थेबद्दल</span><span class="en-text">About</span></a>
+      <a href="#timetable" class="nav-link"><span class="mr-text">वेळापत्रक</span><span
+          class="en-text">Timetable</span></a>
+      <a href="form.html" class="nav-link"><span class="mr-text">प्रवेश अर्ज</span><span
+          class="en-text">Admission</span></a>
+
+      <a href="#gallery" class="nav-link"><span class="mr-text">गॅलरी</span><span class="en-text">Gallery</span></a>
+      <a href="#updates" class="nav-link"><span class="mr-text">अपडेट्स</span><span class="en-text">Updates</span></a>
+
+      <!-- Change Admission link -->
+
+
+      <a href="portal.html" class="nav-link" id="navAdmissionLink">
+        <span class="mr-text">विद्यार्थी पोर्टल</span>
+        <span class="en-text">Student Portal</span>
+      </a>
+      <a href="#contact" class="nav-link"><span class="mr-text">संपर्क</span><span class="en-text">Contact</span></a>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a href="login.html" class="nav-link" id="navAuthLink">
+        <span class="mr-text">लॉगिन</span>
+        <span class="en-text">Login</span> </a>
+    </div>
+
+  </nav>
+
+
+
+
+  <main>
+
+    <section id="home" class="hero">
+
+      <div class="hero-content mr-text">
+        <h1 class="hero-title">
+          वारकरी समाजातील मुलांसाठी<br>गुणवत्तापूर्ण शिक्षण
+        </h1>
+
+        <p class="hero-subtitle">
+          श्री संजीवन वारकरी शिक्षण संस्था बाह्य विद्यार्थ्यांसाठी आध्यात्मिक व शैक्षणिक प्रगतीचा मार्ग दाखवते.
+        </p>
+
+        <p class="hero-tagline">
+          “ज्ञान, संस्कार आणि सेवा यांचा संगम”
+        </p>
+      </div>
+
+      <div class="hero-content en-text">
+        <h1 class="hero-title en-title">
+          Quality Education for Children<br>of the Warkari Community
+        </h1>
+
+        <p class="hero-subtitle">
+          Guides external students on the path of spiritual and academic progress.
+        </p>
+
+        <p class="hero-tagline">
+          “A blend of Knowledge, Values & Service”
+        </p>
+      </div>
+
+
+      <div class="hero-cta">
+        <a href="form.html" class="btn-primary"><span class="mr-text">प्रवेश अर्ज भरा</span><span class="en-text">Apply
+            for Admission</span></a>
+
+        <!-- Hero section -->
+
+
+        <a href="#about" class="btn-secondary">
+          <span class="mr-text">अधिक जाणून घ्या</span>
+          <span class="en-text">Learn More</span>
+        </a>
+      </div>
+
+      <div class="stats-bar">
+        <div class="stat-item"><span class="stat-num">150+</span><span class="stat-label mr-text">विद्यार्थी</span><span
+            class="stat-label en-text">Students</span></div>
+        <div class="stat-item"><span class="stat-num">12+</span><span class="stat-label mr-text">इयत्ता</span><span
+            class="stat-label en-text">Classes</span></div>
+        <div class="stat-item"><span class="stat-num">25+</span><span class="stat-label mr-text">वर्षांचा
+            अनुभव</span><span class="stat-label en-text">Years</span></div>
+        <div class="stat-item"><span class="stat-num">100%</span><span class="stat-label mr-text">समर्पण</span><span
+            class="stat-label en-text">Dedication</span></div>
+      </div>
+
+    </section>
+
+
+
+
+
+    <section id="about" class="section">
+      <div class="section-header scroll-reveal"><span class="section-tag">About / परिचय</span>
+        <div class="section-title mr-text">संस्थेबद्दल</div>
+        <div class="section-title-en en-text">About the Institution</div>
+        <div class="section-divider"></div>
+      </div>
+
+
+      <div class="about-grid scroll-reveal">
+        <div class="about-text">
+          <p class="mr-text">श्री संजीवन वारकरी शिक्षण संस्था ही वारकरी समाजातील बाह्य विद्यार्थ्यांसाठी स्थापन केलेली
+            एक अनोखी शैक्षणिक संस्था आहे.</p>
+          <p class="en-text">A unique educational institution established for external students from the Warkari
+            community.</p>
+
+
+
+          <div class="about-highlights">
+
+
+            <div class="highlight-card">
+              <h4 class="mr-text">📚 शैक्षणिक उपक्रम</h4>
+              <h4 class="en-text">📚 Academic Programs</h4>
+            </div>
+
+            <div class="highlight-card">
+              <h4 class="mr-text">🎓 गुणवत्तापूर्ण मार्गदर्शन</h4>
+              <h4 class="en-text">🎓 Expert Guidance</h4>
+            </div>
+
+            <div class="highlight-card">
+              <h4 class="mr-text">📖 अभंग व कीर्तन शिक्षण</h4>
+              <h4 class="en-text">📖 Abhang & Kirtan Training</h4>
+            </div>
+
+            <div class="highlight-card">
+              <h4 class="mr-text">💻 डिजिटल शिक्षण सुविधा</h4>
+              <h4 class="en-text">💻 Digital Learning</h4>
+            </div>
+
+            <div class="highlight-card">
+              <h4 class="mr-text">🤝 संस्कार व व्यक्तिमत्व विकास</h4>
+              <h4 class="en-text">🤝 Value & Personality Development</h4>
+            </div>
+
+            <div class="highlight-card">
+              <h4 class="mr-text">🙏 अध्यात्मिक शिक्षण</h4>
+              <h4 class="en-text">🙏 Spiritual Education</h4>
+            </div>
+            <div class="highlight-card">
+              <h4 class="mr-text">🏡 निवास व्यवस्था</h4>
+              <h4 class="en-text">🏡 Accommodation</h4>
+            </div>
+            <div class="highlight-card">
+              <h4 class="mr-text">🌿 निसर्गरम्य परिसर</h4>
+              <h4 class="en-text">🌿 Natural Campus</h4>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="about-official">
+          <div class="official-title">Key Officials / प्रमुख पदाधिकारी</div>
+          <div class="official-card">
+            <div class="official-role">संस्थापक अध्यक्ष</div>
+            <div class="official-name">ह.भ.प.श्री. श्रीकृष्ण महाराज भोसले</div>
+          </div>
+
+          <!-- NEW FEATURES -->
+          <div class="official-features">
+
+            <div class="feature-row">
+              <span>🏫</span>
+              <p>स्थापना: 2000</p>
+            </div>
+
+            <div class="feature-row">
+              <span>👨‍🎓</span>
+              <p>विद्यार्थी: 150+</p>
+            </div>
+
+            <div class="feature-row">
+              <span>🙏</span>
+              <p>संस्कार व आध्यात्मिक मार्गदर्शन</p>
+            </div>
+          </div>
+
+
+          <div class="contact-info">
+            <div class="contact-row"><span class="icon">📞</span> 7875878761 / 7875878460</div>
+            <div class="contact-row"><span class="icon">📍</span> केळगांव रोड, आळंदी देवाची</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="section-alt" id="timetable">
+      <div class="section-inner">
+        <div class="section-header scroll-reveal"><span class="section-tag">Daily Schedule / वेळापत्रक</span>
+          <div class="section-title mr-text">दैनंदिन वेळापत्रक</div>
+          <div class="section-title-en en-text">Daily Timetable</div>
+          <div class="section-divider"></div>
+        </div>
+        <div class="scroll-reveal">
+          <table class="timetable">
+            <thead>
+              <tr>
+                <th><span class="mr-text">वेळ</span><span class="en-text">Time</span></th>
+                <th><span class="mr-text">उपक्रम</span><span class="en-text">Activity</span></th>
+                <th><span class="mr-text">स्थान</span><span class="en-text">Location</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="time-col">5:00 AM</td>
+                <td><span class="mr-text">🌅 काकड आरती</span><span class="en-text">🌅 Kakad Aarti</span></td>
+                <td><span class="mr-text">मंदिर</span><span class="en-text">Temple</span></td>
+              </tr>
+              <tr>
+                <td class="time-col">6:00 AM</td>
+                <td><span class="mr-text">🙏 प्रार्थना</span><span class="en-text">🙏 Prayer</span></td>
+                <td><span class="mr-text">सभागृह</span><span class="en-text">Hall</span></td>
+              </tr>
+              <tr>
+                <td class="time-col">7:00 AM</td>
+                <td><span class="mr-text">🍽️ नाश्ता</span><span class="en-text">🍽️ Breakfast</span></td>
+                <td><span class="mr-text">भोजनकक्ष</span><span class="en-text">Dining</span></td>
+              </tr>
+              <tr>
+                <td class="time-col">8:00–12:00</td>
+                <td><span class="mr-text">📚 शालेय अभ्यास</span><span class="en-text">📚 School Study</span></td>
+                <td><span class="mr-text">वर्गखोली</span><span class="en-text">Classroom</span></td>
+              </tr>
+              <tr>
+                <td class="time-col">12:00–1:00</td>
+                <td><span class="mr-text">🍛 जेवण</span><span class="en-text">🍛 Lunch</span></td>
+                <td><span class="mr-text">भोजनकक्ष</span><span class="en-text">Dining</span></td>
+              </tr>
+              <tr>
+                <td class="time-col">1:00–2:00</td>
+                <td><span class="mr-text">😴 विश्रांती</span><span class="en-text">😴 Rest</span></td>
+                <td><span class="mr-text">वसतीगृह</span><span class="en-text">Dormitory</span></td>
+              </tr>
+              <tr>
+                <td class="time-col">2:00–4:00</td>
+                <td><span class="mr-text">📖 अध्यात्मिक शिक्षण</span><span class="en-text">📖 Spiritual Study</span>
+                </td>
+                <td><span class="mr-text">वर्गखोली</span><span class="en-text">Classroom</span></td>
+              </tr>
+              <tr>
+                <td class="time-col">4:00–5:00</td>
+                <td><span class="mr-text">⚽ क्रीडा</span><span class="en-text">⚽ Sports</span></td>
+                <td><span class="mr-text">मैदान</span><span class="en-text">Ground</span></td>
+              </tr>
+              <tr>
+                <td class="time-col">6:00 PM</td>
+                <td><span class="mr-text">🕯️ आरती</span><span class="en-text">🕯️ Aarti</span></td>
+                <td><span class="mr-text">मंदिर</span><span class="en-text">Temple</span></td>
+              </tr>
+              <tr>
+                <td class="time-col">7:00–8:00</td>
+                <td><span class="mr-text">🍽️ जेवण</span><span class="en-text">🍽️ Dinner</span></td>
+                <td><span class="mr-text">भोजनकक्ष</span><span class="en-text">Dining</span></td>
+              </tr>
+              <tr>
+                <td class="time-col">8:00–9:00</td>
+                <td><span class="mr-text">📝 स्वयंअध्ययन</span><span class="en-text">📝 Self Study</span></td>
+                <td><span class="mr-text">अभ्यासिका</span><span class="en-text">Study Room</span></td>
+              </tr>
+              <tr>
+                <td class="time-col">9:30 PM</td>
+                <td><span class="mr-text">🌙 झोप</span><span class="en-text">🌙 Sleep</span></td>
+                <td><span class="mr-text">वसतीगृह</span><span class="en-text">Dormitory</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- Gallery (loaded from DB) -->
+    <!-- Gallery (loaded from DB) -->
+    <!-- <div class="section-alt" id="gallery">
+      <div class="section-inner">
+        <div class="section-header scroll-reveal"><span class="section-tag">Gallery / छायाचित्रे</span>
+          <div class="section-title mr-text">छायाचित्र दालन</div>
+          <div class="section-title-en en-text">Photo Gallery</div>
+          <div class="section-divider"></div>
+        </div>
+        <div class="gallery-grid scroll-reveal" id="publicGalleryGrid"></div>
+      </div>
+    </div> -->
+
+
+    <div class="section-alt" id="gallery">
+      <div class="section-inner">
+        <div class="section-header scroll-reveal">
+          <span class="section-tag">Gallery / छायाचित्रे</span>
+          <div class="section-title mr-text">छायाचित्र दालन</div>
+          <div class="section-title-en en-text">Photo Gallery</div>
+          <div class="section-divider"></div>
+        </div>
+
+        <!-- Grid for thumbnails -->
+        <div class="gallery-grid scroll-reveal" id="publicGalleryGrid"></div>
+      </div>
+    </div>
+
+    <!-- Modal for full image view -->
+    <div id="imageModal">
+      <span id="closeModal">&times;</span>
+      <img id="modalImage" src="">
+      <div id="modalNav">
+        <button id="prevBtn">&#10094;</button>
+        <button id="nextBtn">&#10095;</button>
+      </div>
+    </div>
+
+
+
+
+    <!-- Updates (loaded from DB) -->
+    <section id="updates" class="section">
+      <div class="section-header scroll-reveal"><span class="section-tag">Updates / अपडेट्स</span>
+        <div class="section-title mr-text">ताज्या बातम्या</div>
+        <div class="section-title-en en-text">Latest News</div>
+        <div class="section-divider"></div>
+      </div>
+      <div class="updates-grid scroll-reveal" id="publicUpdatesGrid"></div>
+    </section>
+
+    <div class="section-alt" id="contact">
+      <div class="section-inner">
+        <div class="section-header scroll-reveal"><span class="section-tag">Contact / संपर्क</span>
+          <div class="section-title mr-text">संपर्क माहिती</div>
+          <div class="section-title-en en-text">Contact Information</div>
+          <div class="section-divider"></div>
+        </div>
+        <div class="about-grid scroll-reveal">
+          <div>
+            <div class="about-highlights" style="grid-template-columns:1fr;">
+              <div class="highlight-card">
+                <h4>📍 <span class="mr-text">पत्ता</span><span class="en-text">Address</span></h4>
+                <p>केळगांव रोड, आळंदी देवाची, पुणे</p>
+              </div>
+              <div class="highlight-card">
+                <h4>📞 <span class="mr-text">फोन</span><span class="en-text">Phone</span></h4>
+                <p>7875878761 / 7875878460</p>
+              </div>
+              <div class="highlight-card">
+                <h4>⏰ <span class="mr-text">कार्यालय वेळ</span><span class="en-text">Office Hours</span></h4>
+                <p><span class="mr-text">सोम–शनि: ९–५</span><span class="en-text">Mon–Sat: 9–5</span></p>
+              </div>
+            </div>
+          </div>
+          <div class="about-official">
+            <div class="official-title">Send Message / संदेश पाठवा</div>
+            <div style="display:flex;flex-direction:column;gap:14px;">
+              <div class="form-group"><label class="contact-label"><span class="mr-text">नाव</span><span
+                    class="en-text">Name</span></label><input type="text" id="contactName" class="contact-input"></div>
+              <div class="form-group"><label class="contact-label"><span class="mr-text">मोबाईल</span><span
+                    class="en-text">Mobile</span></label><input type="tel" id="contactMobile" class="contact-input">
+              </div>
+              <div class="form-group"><label class="contact-label"><span class="mr-text">संदेश</span><span
+                    class="en-text">Message</span></label><textarea id="contactMessage"
+                  class="contact-textarea"></textarea></div>
+              <button class="btn-primary" onclick="handleContactMessage()" style="width:100%;"><span
+                  class="mr-text">संदेश पाठवा</span><span class="en-text">Send</span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">श्री संजीवन वारकरी शिक्षण संस्था</div>
+        <div class="footer-brand-desc">Dedicated to spiritual and academic growth of Warkari community children.</div>
+      </div>
+      <div>
+        <div class="footer-col-title">Quick Links</div>
+        <ul class="footer-links">
+          <li><a href="#home">🏠 <span class="mr-text">मुख्यपृष्ठ</span><span class="en-text">Home</span></a></li>
+          <li><a href="form.html">📝 <span class="mr-text">प्रवेश अर्ज</span><span class="en-text">Admission</span></a>
+          </li>
+          <li><a href="#contact">📞 <span class="mr-text">संपर्क</span><span class="en-text">Contact</span></a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-links">
+          <li><a href="#">📍 आळंदी देवाची</a></li>
+          <li><a href="tel:7875878761">📞 7875878761</a></li>
+          <li><a href="tel:7875878460">📞 7875878460</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2025 श्री संजीवन वारकरी शिक्षण संस्था &nbsp;|&nbsp; All Rights Reserved</div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

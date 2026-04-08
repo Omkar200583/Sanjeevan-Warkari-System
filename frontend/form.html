@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="mr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>प्रवेश अर्ज — श्री संजीवन वारकरी</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Marathi:ital@0;1&family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+
+    <div class="notification" id="notification"></div>
+
+    <div class="lang-bar">
+        <span
+            style="color:rgba(255,255,255,0.4);font-size:12px;font-family:'Cinzel',serif;letter-spacing:2px;">LANGUAGE:</span>
+        <button class="lang-btn active" id="btn-mr" onclick="setLang('mr')">मराठी</button>
+        <button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button>
+    </div>
+
+
+    <!-- Top bar -->
+    <div
+        style="background:var(--dark-brown);padding:10px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+        <a href="portal.html" class="back-link" style="margin:0;color:var(--light-gold);">
+            ← <span class="mr-text">पोर्टल</span><span class="en-text">Portal</span>
+        </a>
+        <div id="formUserBar" style="color:rgba(255,255,255,0.7);font-size:13px;"></div>
+        <span onclick="logout()"
+            style="cursor:pointer;color:var(--light-gold);font-size:13px;font-family:'Cinzel',serif;letter-spacing:1px;">
+            🚪 <span class="mr-text">बाहेर पडा</span><span class="en-text">Logout</span>
+        </span>
+    </div>
+
+    <!-- My Applications back link -->
+    <a href="portal.html" class="back-link" style="margin-bottom:30px;">
+        ← <span class="mr-text">पोर्टल</span><span class="en-text">Portal</span>
+    </a>
+
+    <section class="section" style="max-width:900px;">
+        <div class="section-header scroll-reveal">
+            <span class="section-tag">Admission / प्रवेश</span>
+            <div class="section-title mr-text">प्रवेश अर्ज</div>
+            <div class="section-title-en en-text">Admission Form</div>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="form-container scroll-reveal">
+            <div class="form-header">
+                <div class="form-title-mr">* प्रवेश अर्ज * — श्री संजीवन वारकरी शिक्षण संस्था</div>
+                <div class="form-title-en">Admission Form — Shri Sanjeevan Warkari Educational Institution</div>
+            </div>
+
+            <form id="admissionForm" onsubmit="event.preventDefault(); submitForm();">
+                <div class="form-meta">
+                    <div class="form-meta-field"><label>दिनांक / Date</label><input type="date" id="formDate"></div>
+                    <div class="form-meta-field"><label>वर्ष / Year</label><input type="text" id="academicYear"
+                            placeholder="2024-25"></div>
+                    <div class="form-meta-field"><label>फॉर्म नं.</label><input type="text" id="formNo"
+                            placeholder="F-001"></div>
+                    <div class="form-meta-field"><label>रजि. नं.</label><input type="text" id="regNo"
+                            placeholder="R-001"></div>
+                </div>
+
+                <div class="form-body">
+                    <div class="form-section-title"><span class="mr-text">विद्यार्थ्याची माहिती</span><span
+                            class="en-text">Student Details</span></div>
+                    <div class="form-grid">
+                        <div class="form-group"><label><span class="mr-text">संपूर्ण नाव *</span><span class="en-text">
+                                    / Full Name *</span></label><input type="text" id="studentName" required
+                                placeholder="विद्यार्थ्याचे नाव"></div>
+                        <div class="form-group"><label><span class="mr-text">वडिलांचे नाव *</span><span class="en-text">
+                                    / Father's Name *</span></label><input type="text" id="fatherName" required
+                                placeholder="वडिलांचे नाव"></div>
+                        <div class="form-group"><label><span class="mr-text">आईचे नाव *</span><span class="en-text"> /
+                                    Mother's Name *</span></label><input type="text" id="motherName" required
+                                placeholder="आईचे नाव"></div>
+                        <div class="form-group"><label><span class="mr-text">जन्म तारीख *</span><span class="en-text"> /
+                                    DOB *</span></label><input type="date" id="dob" required></div>
+                        <div class="form-group"><label><span class="mr-text">मोबाईल *</span><span class="en-text"> /
+                                    Mobile *</span></label><input type="tel" id="studentMobile" required
+                                placeholder="9XXXXXXXXX"></div>
+                        <div class="form-group"><label><span class="mr-text">पर्यायी मोबाईल</span><span class="en-text">
+                                    / Alt. Mobile</span></label><input type="tel" id="altMobile"
+                                placeholder="9XXXXXXXXX"></div>
+                        <div class="form-group"><label><span class="mr-text">धर्म</span><span class="en-text"> /
+                                    Religion</span></label><input type="text" id="religion" placeholder="Hindu"></div>
+                        <div class="form-group"><label><span class="mr-text">इयत्ता *</span><span class="en-text"> /
+                                    Grade *</span></label><select id="grade" required>
+                                <option value="">निवडा / Select</option>
+                                <option>1st</option>
+                                <option>2nd</option>
+                                <option>3rd</option>
+                                <option>4th</option>
+                                <option>5th</option>
+                                <option>6th</option>
+                                <option>7th</option>
+                                <option>8th</option>
+                                <option>9th</option>
+                                <option>10th</option>
+                            </select></div>
+                    </div>
+
+                    <div class="form-section-title"><span class="mr-text">आधार क्रमांक</span><span
+                            class="en-text">Aadhaar Numbers</span></div>
+                    <div class="form-grid">
+                        <div class="form-group"><label><span class="mr-text">विद्यार्थी आधार</span><span
+                                    class="en-text"> / Student Aadhaar</span></label><input type="text"
+                                id="studentAadhaar" placeholder="XXXX XXXX XXXX"></div>
+                        <div class="form-group"><label><span class="mr-text">वडील आधार</span><span class="en-text"> /
+                                    Father's Aadhaar</span></label><input type="text" id="fatherAadhaar"
+                                placeholder="XXXX XXXX XXXX"></div>
+                        <div class="form-group"><label><span class="mr-text">आई आधार</span><span class="en-text"> /
+                                    Mother's Aadhaar</span></label><input type="text" id="motherAadhaar"
+                                placeholder="XXXX XXXX XXXX"></div>
+                    </div>
+
+                    <div class="form-section-title"><span class="mr-text">पत्ता</span><span
+                            class="en-text">Address</span></div>
+                    <div class="form-grid">
+                        <div class="form-group full-width"><label><span class="mr-text">कायमचा पत्ता</span><span
+                                    class="en-text"> / Permanent Address</span></label><textarea
+                                id="permanentAddress"></textarea></div>
+                        <div class="form-group full-width"><label><span class="mr-text">सध्याचा पत्ता</span><span
+                                    class="en-text"> / Current Address</span></label><textarea
+                                id="currentAddress"></textarea></div>
+                        <div class="form-group"><label><span class="mr-text">ई-मेल</span><span class="en-text"> /
+                                    Email</span></label><input type="email" id="phoneOrEmail"
+                                placeholder="email@example.com"></div>
+                    </div>
+
+                    <div class="form-section-title"><span class="mr-text">नातेवाईक</span><span
+                            class="en-text">Relative</span></div>
+                    <div class="form-grid">
+                        <div class="form-group"><label><span class="mr-text">नातेवाईकाचे नाव</span><span
+                                    class="en-text"> / Relative's Name</span></label><input type="text"
+                                id="relativeName"></div>
+                        <div class="form-group"><label><span class="mr-text">मोबाईल</span><span class="en-text"> /
+                                    Mobile</span></label><input type="tel" id="relativeMobile" placeholder="9XXXXXXXXX">
+                        </div>
+                        <div class="form-group full-width"><label><span class="mr-text">पत्ता</span><span
+                                    class="en-text"> / Address</span></label><textarea id="relativeAddress"
+                                rows="2"></textarea></div>
+                    </div>
+
+                    <div class="form-section-title"><span class="mr-text">संस्थेत येण्यापूर्वीची प्रगती</span><span
+                            class="en-text">Previous Progress</span></div>
+                    <div class="form-grid">
+                        <div class="form-group"><label><span class="mr-text">मराठी वाचन</span><span class="en-text"> /
+                                    Marathi Reading</span></label><select id="marathiReading">
+                                <option>निवडा</option>
+                                <option>उत्तम</option>
+                                <option>बरे</option>
+                                <option>कमकुवत</option>
+                            </select></div>
+                        <div class="form-group"><label><span class="mr-text">इंग्रजी वाचन</span><span class="en-text"> /
+                                    English Reading</span></label><select id="englishReading">
+                                <option>Select</option>
+                                <option>Good</option>
+                                <option>Average</option>
+                                <option>Weak</option>
+                            </select></div>
+                        <div class="form-group"><label><span class="mr-text">पाढे</span><span class="en-text"> /
+                                    Tables</span></label><select id="tablesKnowledge">
+                                <option>निवडा</option>
+                                <option>1–5</option>
+                                <option>1–10</option>
+                                <option>1–20</option>
+                            </select></div>
+                        <div class="form-group"><label><span class="mr-text">अध्यात्मिक शिक्षण</span><span
+                                    class="en-text"> / Spiritual Education</span></label><select
+                                id="spiritualEducation">
+                                <option>निवडा</option>
+                                <option>उत्तम</option>
+                                <option>बरे</option>
+                                <option>सुरुवात</option>
+                            </select></div>
+                        <div class="form-group"><label><span class="mr-text">आवड</span><span class="en-text"> /
+                                    Hobbies</span></label><input type="text" id="hobbies"></div>
+                        <div class="form-group"><label><span class="mr-text">पालकांची अपेक्षा</span><span
+                                    class="en-text"> / Parent Expectations</span></label><input type="text"
+                                id="parentExpectations"></div>
+                    </div>
+
+                    <div class="form-section-title"><span class="mr-text">कागदपत्रे अपलोड करा</span><span
+                            class="en-text">Upload Documents</span></div>
+                    <div class="form-grid">
+                        <div class="form-group"><label><span class="mr-text">शाळा सोडल्याचा दाखला</span><span
+                                    class="en-text"> / SLC</span></label><input type="file" accept=".pdf,.jpg,.png">
+                        </div>
+                        <div class="form-group"><label><span class="mr-text">विद्यार्थ्याचा फोटो</span><span
+                                    class="en-text"> / Photo</span></label><input type="file" accept=".jpg,.png"></div>
+                        <div class="form-group"><label><span class="mr-text">आधार कार्ड</span><span class="en-text"> /
+                                    Aadhaar Card</span></label><input type="file" accept=".pdf,.jpg,.png"></div>
+                        <div class="form-group"><label><span class="mr-text">इतर कागदपत्रे</span><span class="en-text">
+                                    / Other Docs</span></label><input type="file" accept=".pdf,.jpg,.png" multiple>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-submit-area">
+                    <p class="form-note mr-text">* प्रवेशपत्राशिवाय प्रवेश दिला जाणार नाही.</p>
+                    <p class="form-note en-text">* Admission requires this form. All information must be accurate.</p>
+                    <button type="submit" class="btn-primary"><span class="mr-text">अर्ज सबमिट करा</span><span
+                            class="en-text">Submit Application</span></button>
+                </div>
+            </form>
+        </div>
+
+        <!-- My Applications List -->
+        <div style="margin-top:40px;">
+            <div class="section-title mr-text" style="font-size:22px;">माझे अर्ज</div>
+            <div class="section-title-en en-text" style="font-size:16px;color:var(--medium-brown);">My Applications
+            </div>
+            <div class="section-divider" style="margin:12px 0 20px;"></div>
+            <div id="myApplicationsList"></div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    <script>
+
+    </script>
+</body>
+
+</html>
